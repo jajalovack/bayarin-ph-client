@@ -1,5 +1,5 @@
 const Login = () => {
-  return <div>Login</div>;
+  return <div className="padding h-screen">Login</div>;
 };
 
 export default Login;

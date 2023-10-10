@@ -1,5 +1,5 @@
 const Register = () => {
-  return <div>Register</div>;
+  return <div className="padding h-screen">Register</div>;
 };
 
 export default Register;

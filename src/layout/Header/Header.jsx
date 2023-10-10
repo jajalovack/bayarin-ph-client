@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="drawer drawer-end">
@@ -10,24 +12,36 @@ const Header = () => {
             <ul className="menu menu-horizontal text-white">
               {/* Navbar menu content here */}
               <li>
-                <a className="hover:border-b hover:text-white duration-100">
+                <Link
+                  to="/"
+                  className="hover:border-b hover:text-white duration-100"
+                >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:border-b hover:text-white duration-100">
+                <Link
+                  to="/about"
+                  className="hover:border-b hover:text-white duration-100"
+                >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:border-b hover:text-white duration-100">
+                <Link
+                  to="/services"
+                  className="hover:border-b hover:text-white duration-100"
+                >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:border-b hover:text-white duration-100">
+                <Link
+                  to="/profile"
+                  className="hover:border-b hover:text-white duration-100"
+                >
                   Profile
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="join">
@@ -67,19 +81,23 @@ const Header = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
+          <div>
+            <h1 className="mb-[6rem] text-xl font-bold">Bayarin PH</h1>
+          </div>
+
           {/* Sidebar content here */}
           <li>
-            <a>Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a>About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a>Services</a>
+            <Link to="/services">Services</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <a>Profile</a>
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
       </div>

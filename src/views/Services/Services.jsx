@@ -1,5 +1,5 @@
 const Services = () => {
-  return <div>Services</div>;
+  return <div className="padding h-screen">Services</div>;
 };
 
 export default Services;
