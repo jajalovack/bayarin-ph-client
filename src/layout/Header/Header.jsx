@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,36 +12,36 @@ const Header = () => {
             <ul className="menu menu-horizontal text-white">
               {/* Navbar menu content here */}
               <li>
-                <Link
+                <NavLink
                   to="/"
                   className="hover:border-b hover:text-white duration-100"
                 >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/about"
                   className="hover:border-b hover:text-white duration-100"
                 >
                   About
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/services"
                   className="hover:border-b hover:text-white duration-100"
                 >
                   Services
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/profile"
                   className="hover:border-b hover:text-white duration-100"
                 >
                   Profile
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <div className="join">
@@ -87,17 +87,17 @@ const Header = () => {
 
           {/* Sidebar content here */}
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <Link to="/services">Services</Link>
+            <NavLink to="/services">Services</NavLink>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/profile">Profile</Link>
+            <NavLink to="/profile">Profile</NavLink>
           </li>
         </ul>
       </div>
