@@ -1,8 +1,8 @@
 const Home = () => {
   return (
     <>
-      <div className="md:padding h-screen mb-[10rem]">
-        <div className="mt-[5rem] pt-10 md:hero min-h-screen bg-base-200">
+      <div className="md:padding md:h-screen mb-[10rem]">
+        <div className="mt-1 pt-10 md:hero md:min-h-screen md:bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             {/* <img
               src="/images/stock/photo-1635805737707-575885ab0820.jpg"
@@ -23,7 +23,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="padding h-screen">About</div>
       <div className="padding h-screen">Services</div>
     </>
   );

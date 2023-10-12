@@ -5,7 +5,7 @@ import Register from "./views/Register/Register";
 import Profile from "./views/Profile/Profile";
 import Services from "./views/Services/Services";
 
-const routes = [
+export const navRoutes = [
   {
     path: "/",
     element: <Home />,
@@ -22,6 +22,14 @@ const routes = [
     name: "Services",
   },
   {
+    path: "/profile",
+    element: <Profile />,
+    name: "Profile",
+  },
+];
+
+const authRoutes = [
+  {
     path: "/login",
     element: <Login />,
     name: "Login",
@@ -31,11 +39,8 @@ const routes = [
     element: <Register />,
     name: "Register",
   },
-  {
-    path: "/profile",
-    element: <Profile />,
-    name: "Profile",
-  },
 ];
+
+const routes = [...authRoutes, ...navRoutes];
 
 export default routes;

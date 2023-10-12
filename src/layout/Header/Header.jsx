@@ -12,17 +12,14 @@ const Header = () => {
             <ul className="menu menu-horizontal text-white">
               {/* Navbar menu content here */}
               <li>
-                <NavLink
-                  to="/"
-                  className="hover:border-b hover:text-white duration-100"
-                >
+                <NavLink to="/" className="link link-hover hover:text-white">
                   Home
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/about"
-                  className="hover:border-b hover:text-white duration-100"
+                  className="link link-hover hover:text-white"
                 >
                   About
                 </NavLink>
@@ -30,7 +27,7 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/services"
-                  className="hover:border-b hover:text-white duration-100"
+                  className="link link-hover hover:text-white"
                 >
                   Services
                 </NavLink>
@@ -38,7 +35,7 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/profile"
-                  className="hover:border-b hover:text-white duration-100"
+                  className="link link-hover hover:text-white"
                 >
                   Profile
                 </NavLink>
@@ -46,9 +43,11 @@ const Header = () => {
             </ul>
             <div className="join">
               <button className="btn btn-sm join-item btn-outline text-white">
-                Login
+                <Link to="/login">Login</Link>
               </button>
-              <button className="btn btn-sm join-item">Register</button>
+              <button className="btn btn-sm join-item">
+                <Link to="/register">Register</Link>
+              </button>
             </div>
           </div>
           <div className="flex-none lg:hidden">
@@ -74,7 +73,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-10">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
