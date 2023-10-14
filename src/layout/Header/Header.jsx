@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
+  const [drawerState, setDrawerState] = useState(false);
+  function handleCloseNavMenu() {
+    setDrawerState(false);
+  }
+
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
