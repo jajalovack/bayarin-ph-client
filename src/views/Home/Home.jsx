@@ -29,11 +29,11 @@ const Home = () => {
           />
         </h2>
         <p className="text-white py-4 max-w-[700px]">
-          Maligayang pagdating sa Bills PH – Ang iyong partner sa de-kalidad at
-          mas pinadaling paraan sa serbisyong pinansyal, remittance, pagbabayad
-          ng mga bills, at marami pang iba! Iexplore ang aming website upang
-          masimulan mo ang stress-free at mas madaling paraan sa pag-handle ng
-          iyong mga bayarin kasama ang BayarinPH
+          Ang iyong partner sa de-kalidad at mas pinadaling paraan sa serbisyong
+          pinansyal, remittance, pagbabayad ng mga bills, at marami pang iba!
+          Iexplore ang aming website upang masimulan mo ang stress-free at mas
+          madaling paraan sa pag-handle ng iyong mga bayarin kasama ang Bayarin
+          PH
         </p>
       </div>
     </div>
