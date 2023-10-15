@@ -1,4 +1,5 @@
 import Header from "./Header/Header";
+import Services from "../views/Home/Components/Services";
 import Footer from "./Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import routes from "../routes";
@@ -19,6 +20,7 @@ const index = () => {
           );
         })}
       </Routes>
+      <Services />
       <Footer />
     </div>
   );

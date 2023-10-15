@@ -1,30 +1,42 @@
+import { TypeAnimation } from "react-type-animation";
+
 const Home = () => {
   return (
-    <>
-      <div className="md:padding md:h-screen mb-[10rem]">
-        <div className="mt-1 pt-10 md:hero md:min-h-screen md:bg-base-200">
-          <div className="hero-content flex-col lg:flex-row">
-            {/* <img
-              src="/images/stock/photo-1635805737707-575885ab0820.jpg"
-              className="max-w-sm rounded-lg shadow-2xl"
-            /> */}
-            <div>
-              <h1 className="text-5xl font-bold">Bayarin PH</h1>
-              <p className="py-6">
-                Welcome to Bayarin PH, your trusted partner in simplifying bill
-                payments. We're dedicated to making your life easier by
-                providing a convenient online platform for settling bills. With
-                Bayarin, managing your finances has never been more
-                straightforward. Join us on a journey of hassle-free bill
-                payments today!
-              </p>
-              <button className="btn btn-primary">Get Started</button>
-            </div>
-          </div>
-        </div>
+    <div className="w-full h-screen bg-[#1B4A9C]">
+      <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full">
+        <p className="text-white md:text-xl ml-1 font-semibold tracking-wide">
+          Maligayang Pagdating sa
+        </p>
+        <h1 className="text-4xl sm:text-7xl font-bold text-[#E0DA00]">
+          Bayarin PH
+        </h1>
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#fca311] mb-2 mt-2">
+          <TypeAnimation
+            sequence={[
+              "Electric Utilities",
+              1000,
+              "Water Utilities",
+              1000,
+              "Cable/Internet",
+              1000,
+              "Tuition",
+              1000,
+            ]}
+            wrapper="span"
+            speed={50}
+            style={{ fontSize: "1em", paddingLeft: "3px" }}
+            repeat={Infinity}
+          />
+        </h2>
+        <p className="text-white py-4 max-w-[700px]">
+          Maligayang pagdating sa Bills PH – Ang iyong partner sa de-kalidad at
+          mas pinadaling paraan sa serbisyong pinansyal, remittance, pagbabayad
+          ng mga bills, at marami pang iba! Iexplore ang aming website upang
+          masimulan mo ang stress-free at mas madaling paraan sa pag-handle ng
+          iyong mga bayarin kasama ang BayarinPH
+        </p>
       </div>
-      <div className="padding h-screen">Services</div>
-    </>
+    </div>
   );
 };
 

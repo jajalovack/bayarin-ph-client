@@ -33,6 +33,15 @@ const Register = () => {
                   required
                 />
                 <label className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="address"
+                  className="input input-bordered"
+                  required
+                />
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
