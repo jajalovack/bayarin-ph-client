@@ -1,5 +1,7 @@
+import React from "react";
+
 const Services = () => {
-  return <div className="padding h-screen">Services</div>;
+  return <div className="h-screen padding">Services</div>;
 };
 
 export default Services;

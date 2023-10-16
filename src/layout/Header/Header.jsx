@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import Logo from "../../assets/logo.svg";
 
 const Header = () => {
   const [drawerState, setDrawerState] = useState(false);
@@ -12,8 +13,10 @@ const Header = () => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="w-full h-20 navbar bg-[#000854]">
-          <div className="flex-1 px-2 mx-2 text-white">Bayarin PH</div>
+        <div className="w-full h-24 navbar bg-[#000854]">
+          <div className="flex-1 px-2 mx-2 text-white">
+            <object className="w-48" data={Logo}></object>
+          </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal text-white">
               {/* Navbar menu content here */}
