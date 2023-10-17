@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link as LinkRouter } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 import Logo from "../../assets/logo.svg";
 
 const Header = () => {
@@ -34,12 +35,16 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/services"
+                <LinkScroll
+                  to="services"
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
                   className="link link-hover hover:text-white"
                 >
                   Services
-                </NavLink>
+                </LinkScroll>
               </li>
               <li>
                 <NavLink
@@ -52,10 +57,10 @@ const Header = () => {
             </ul>
             <div className="join">
               <button className="btn btn-sm join-item btn-outline text-white">
-                <Link to="/login">Login</Link>
+                <LinkRouter to="/login">Login</LinkRouter>
               </button>
               <button className="btn btn-sm join-item">
-                <Link to="/register">Register</Link>
+                <LinkRouter to="/register">Register</LinkRouter>
               </button>
             </div>
           </div>

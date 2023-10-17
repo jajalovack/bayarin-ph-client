@@ -7,7 +7,7 @@ const Services = () => {
   return (
     // will change the color of the icons and text to white after checking
 
-    <div className="h-screen bg-[#F48787] overflow-x-hidden">
+    <div name="services" className="h-screen bg-[#F48787] overflow-x-hidden">
       <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
         <header className="pb-8 sm:mx-auto">
           <p className="text-4xl font-bold inline border-b-4 border-red-700">

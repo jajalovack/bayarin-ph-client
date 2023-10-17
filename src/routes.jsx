@@ -3,7 +3,6 @@ import About from "./views/About/About";
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import Profile from "./views/Profile/Profile";
-import Services from "./views/Services/Services";
 
 export const navRoutes = [
   {
@@ -15,11 +14,6 @@ export const navRoutes = [
     path: "/about",
     element: <About />,
     name: "About",
-  },
-  {
-    path: "/services",
-    element: <Services />,
-    name: "Services",
   },
   {
     path: "/profile",
