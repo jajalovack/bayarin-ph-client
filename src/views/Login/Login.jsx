@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import http from "../../lib/http";
+import { useState } from "react";
 
 const Login = () => {
+  const api = http();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className="mt-3 lg:padding h-screen mb-[15rem]">
       <div className="hero min-h-screen md:bg-base-200">
@@ -23,6 +29,8 @@ const Login = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
@@ -34,6 +42,8 @@ const Login = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <label className="label">

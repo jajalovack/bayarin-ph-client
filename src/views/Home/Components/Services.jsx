@@ -1,16 +1,17 @@
 import Electricity from "../../../assets/images/services-electricity-img.png";
 import Internet from "../../../assets/images/services-internet-img.png";
 import Tuition from "../../../assets/images/services-tuition-img.png";
-import Water from "../../../assets/images/services-Water-img.png";
+import Water from "../../../assets/images/services-water-img.png";
+import Credit from "../../../assets/images/services-credit-img.png";
+import Load from "../../../assets/images/services-load-img.png";
+import Misc from "../../../assets/images/services-misc-img.png";
 
 const Services = () => {
   return (
-    // will change the color of the icons and text to white after checking
-
-    <div name="services" className="h-screen bg-[#F48787] overflow-x-hidden">
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
+    <div id="services" className="bg-[#F48787] overflow-x-hidden">
+      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full md:h-screen">
         <header className="pb-8 sm:mx-auto">
-          <p className="text-4xl font-bold inline border-b-4 border-red-700">
+          <p className="ml-6 md:mx-auto text-4xl font-bold inline border-b-4 border-red-700">
             Services
           </p>
         </header>
@@ -30,19 +31,23 @@ const Services = () => {
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
             <img className="w-20 mx-auto" src={Internet} alt="Internet Icon" />
-            <p className="my-4">Cable/Internet</p>
+            <p className="my-4">Cable/Internets</p>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
             <img className="w-20 mx-auto" src={Tuition} alt="Tuition Icon" />
             <p className="my-4">Tuition</p>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Tuition} alt="Tuition Icon" />
-            <p className="my-4">Electric Utilities</p>
+            <img className="w-20 mx-auto" src={Credit} alt="Tuition Icon" />
+            <p className="my-4">Credit</p>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Tuition} alt="Tuition Icon" />
-            <p className="my-4">Electric Utilities</p>
+            <img className="w-20 mx-auto" src={Load} alt="Tuition Icon" />
+            <p className="my-4">Prepaid Load</p>
+          </div>
+          <div className="hover:scale-110 duration-100 cursor-pointer">
+            <img className="w-20 mx-auto" src={Misc} alt="Tuition Icon" />
+            <p className="my-4">Miscellanous</p>
           </div>
         </div>
       </div>

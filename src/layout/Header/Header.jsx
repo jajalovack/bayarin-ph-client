@@ -39,7 +39,7 @@ const Header = () => {
                   to="services"
                   spy={true}
                   smooth={true}
-                  offset={50}
+                  offset={5}
                   duration={500}
                   className="link link-hover hover:text-white"
                 >
@@ -106,7 +106,15 @@ const Header = () => {
             <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <NavLink to="/services">Services</NavLink>
+            <LinkScroll
+              to="services"
+              spy={true}
+              smooth={true}
+              offset={5}
+              duration={500}
+            >
+              Services
+            </LinkScroll>
           </li>
           <div className="divider"></div>
           <li>
