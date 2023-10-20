@@ -5,10 +5,28 @@ import { useState } from "react";
 const Login = () => {
   const api = http();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({});
+
+  async function submit(e) {
+    e.preventDefault();
+    try {
+      const body = {
+        email,
+        password,
+      };
+
+      const response = await api.post("/login", body);
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+      setError(e.response.data.errors);
+    }
+  }
+
   return (
-    <div className="mt-3 lg:padding h-screen mb-[15rem]">
+    <div className="mt-3 md:padding h-screen mb-[15rem]">
       <div className="hero min-h-screen md:bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left md:w-[30rem] md:ml-10">
@@ -18,9 +36,12 @@ const Login = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
+            <button className="btn btn-link">
+              <Link to="/register">Don't Have an Account? Register Now!</Link>
+            </button>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={submit} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -29,8 +50,8 @@ const Login = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -51,17 +72,11 @@ const Login = () => {
                     Forgot password?
                   </a>
                 </label>
-                <label className="label">
-                  <Link
-                    to="/register"
-                    className="label-text-alt link link-hover"
-                  >
-                    Register Now!
-                  </Link>
-                </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary">
+                  Login
+                </button>
               </div>
             </form>
           </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Register = () => {
   return (
     <div className="mt-3 lg:padding h-screen mb-[15rem]">
@@ -10,6 +12,9 @@ const Register = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
+            <button className="btn btn-link">
+              <Link to="/login">Already Have an Account? Login Now!</Link>
+            </button>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body">
@@ -42,6 +47,13 @@ const Register = () => {
                   required
                 />
               </div>
+              <label className="label">
+                <span className="label-text">Pick a File</span>
+              </label>
+              <input
+                type="file"
+                className="file-input file-input-bordered w-full max-w-xs"
+              />
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
