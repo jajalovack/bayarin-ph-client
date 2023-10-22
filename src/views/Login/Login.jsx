@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
-import http from "../../lib/http";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import http from "../../lib/http";
 
 const Login = () => {
+  const navigate = useNavigate();
   const api = http();
 
   const [email, setEmail] = useState("");
@@ -18,7 +19,9 @@ const Login = () => {
       };
 
       const response = await api.post("/login", body);
-      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      navigate("/");
     } catch (e) {
       console.log(e);
       setError(e.response.data.errors);
