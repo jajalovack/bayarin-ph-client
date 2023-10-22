@@ -22,7 +22,7 @@ export const navRoutes = [
   },
 ];
 
-const authRoutes = [
+export const authRoutes = [
   {
     path: "/login",
     element: <Login />,

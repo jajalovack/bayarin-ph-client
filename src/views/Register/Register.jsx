@@ -2,15 +2,14 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
-    <div className="mt-3 lg:padding h-screen mb-[15rem]">
+    <div className=" md:padding h-screen mb-[25rem]">
       <div className="hero min-h-screen md:bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left md:w-[30rem] md:ml-10">
             <h1 className="text-5xl font-bold">Register</h1>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Create an account and start enjoying cashless transactions! Now
+              available for all networks.
             </p>
             <button className="btn btn-link">
               <Link to="/login">Already Have an Account? Login Now!</Link>
