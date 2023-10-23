@@ -3,22 +3,29 @@ import { NavLink, Link as LinkRouter } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import Logo from "../../assets/logo.svg";
 import Icon from "../../assets/icon.svg";
+import http from "../../lib/http";
 
 const Header = () => {
-  const [drawerState, setDrawerState] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("authenticated", () => {
-      setIsLoggedIn(localStorage.getItem("token"));
-    });
+    window.addEventListener("authenticated", checkToken);
     return () => {
       window.removeEventListener("authenticated", () => {});
     };
   }, []);
 
-  function handleCloseNavMenu() {
-    setDrawerState(false);
+  function checkToken() {
+    setToken(localStorage.getItem("token"));
+  }
+
+  function logout() {
+    const api = http({
+      Authorization: `Bearer ${isLoggedIn}`,
+    });
+    api.post("/logout");
+    localStorage.clear();
+    window.dispatchEvent(new Event("authenticated"));
   }
 
   return (
@@ -61,12 +68,27 @@ const Header = () => {
                 </li>
               </ul>
               <div className="join">
-                <button className="btn btn-sm join-item btn-outline text-white">
-                  <LinkRouter to="/login">Login</LinkRouter>
-                </button>
-                <button className="btn btn-sm join-item">
-                  <LinkRouter to="/register">Register</LinkRouter>
-                </button>
+                {token ? (
+                  <>
+                    <button className="btn btn-sm">
+                      <LinkRouter to="/profile">Profile</LinkRouter>
+                    </button>
+                    <button className="btn btn-sm bg-red-300">
+                      <LinkRouter onClick={logout} to="/login">
+                        Logout
+                      </LinkRouter>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button className="btn btn-sm join-item btn-outline text-white">
+                      <LinkRouter to="/login">Login</LinkRouter>
+                    </button>
+                    <button className="btn btn-sm join-item">
+                      <LinkRouter to="/register">Register</LinkRouter>
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className="flex-none lg:hidden">

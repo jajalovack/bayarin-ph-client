@@ -22,6 +22,7 @@ const Login = () => {
       const response = await api.post("/login", body);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
+      window.dispatchEvent(new Event("authenticated"));
       navigate("/");
     } catch (e) {
       setError(e.response.data.errors);
