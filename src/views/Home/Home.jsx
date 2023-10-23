@@ -1,10 +1,14 @@
 import { TypeAnimation } from "react-type-animation";
+import { HiArrowNarrowRight } from "react-icons/hi";
 import Services from "../Home/Components/Services";
+import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 
 const Home = () => {
+  const authToken = localStorage.getItem("token");
   return (
     <div className="w-full bg-[#1B4A9C]">
-      <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center py-[6rem] md:py-[12rem]">
+      <div className="max-w-[1000px] mx-auto px-8 flex flex-col justify-center py-[6rem] md:py-[15rem]">
         <p className="text-white md:text-xl ml-1 font-semibold tracking-wide">
           Maligayang Pagdating sa
         </p>
@@ -36,8 +40,26 @@ const Home = () => {
           madaling paraan sa pag-handle ng iyong mga bayarin kasama ang Bayarin
           PH
         </p>
+        <div className="flex gap-3">
+          <button className="group text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-[#c1121f] hover:border-[#c1121f] duration-300 rounded">
+            <LinkRouter to="/about">Learn More</LinkRouter>
+            <span className="group-hover:rotate-90 duration-300">
+              <HiArrowNarrowRight className="ml-3" />
+            </span>
+          </button>
+          {authToken && (
+            <button className="group text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-[#c1121f] hover:border-[#c1121f] duration-300 rounded">
+              <LinkScroll to="services" smooth={true} duration={500}>
+                Services
+              </LinkScroll>
+              <span className="group-hover:rotate-90 duration-300">
+                <HiArrowNarrowRight className="ml-3" />
+              </span>
+            </button>
+          )}
+        </div>
       </div>
-      <Services />
+      {authToken && <Services />}
     </div>
   );
 };

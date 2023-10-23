@@ -57,9 +57,6 @@ const Login = () => {
             <p className="py-6">
               Experience a fast and easy transactions with Bayarin PH
             </p>
-            <button className="btn btn-link">
-              <Link to="/register">Don't Have an Account? Register Now!</Link>
-            </button>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={submit} className="card-body">
@@ -98,6 +95,12 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
+                <span>
+                  Don't have an Account?
+                  <button className="btn btn-link">
+                    <Link to="/register">Register</Link>
+                  </button>
+                </span>
               </div>
             </form>
           </div>

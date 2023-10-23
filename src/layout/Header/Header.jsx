@@ -7,8 +7,14 @@ import http from "../../lib/http";
 
 const Header = () => {
   const [token, setToken] = useState(false);
+  const [drawerState, setDrawerState] = useState(false);
+
+  function handleCloseNavMenu() {
+    setDrawerState(false);
+  }
 
   useEffect(() => {
+    checkToken();
     window.addEventListener("authenticated", checkToken);
     return () => {
       window.removeEventListener("authenticated", () => {});
@@ -21,7 +27,7 @@ const Header = () => {
 
   function logout() {
     const api = http({
-      Authorization: `Bearer ${isLoggedIn}`,
+      Authorization: `Bearer ${token}`,
     });
     api.post("/logout");
     localStorage.clear();
@@ -54,23 +60,25 @@ const Header = () => {
                     About
                   </NavLink>
                 </li>
-                <li>
-                  <LinkScroll
-                    to="services"
-                    spy={true}
-                    smooth={true}
-                    offset={5}
-                    duration={500}
-                    className="link link-hover hover:text-white"
-                  >
-                    Services
-                  </LinkScroll>
-                </li>
+                {token ? (
+                  ""
+                ) : (
+                  <>
+                    <li>
+                      <NavLink
+                        to="/services"
+                        className="link link-hover hover:text-white"
+                      >
+                        Services
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
               <div className="join">
                 {token ? (
                   <>
-                    <button className="btn btn-sm">
+                    <button className="btn btn-sm mr-3">
                       <LinkRouter to="/profile">Profile</LinkRouter>
                     </button>
                     <button className="btn btn-sm bg-red-300">
@@ -142,31 +150,57 @@ const Header = () => {
                 About
               </NavLink>
             </li>
-            <li>
-              <LinkScroll
-                to="services"
-                spy={true}
-                smooth={true}
-                offset={5}
-                duration={500}
-                className="text-white hover:text-white hover:bg-[#DD3E3E]"
-              >
-                Services
-              </LinkScroll>
-            </li>
+            {token ? (
+              ""
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/services"
+                    className="text-white hover:text-white hover:bg-[#DD3E3E]"
+                  >
+                    Services
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {/* divider */}
             <div className="flex flex-col w-full border-opacity-50">
               <div className="grid h-1 card bg-base-300 rounded-box place-items-center my-5"></div>
             </div>
-            <li>
-              <div className="join bg-[#000854] hover:bg-[#000854]">
-                <button className="btn btn-sm join-item btn-outline text-white">
-                  <LinkRouter to="/login">Login</LinkRouter>
-                </button>
-                <button className="btn btn-sm join-item btn-outline text-white">
-                  <LinkRouter to="/register">Register</LinkRouter>
-                </button>
-              </div>
-            </li>
+            {/* end of divider */}
+            {token ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/profile"
+                    className="text-white hover:text-white hover:bg-[#DD3E3E]"
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <LinkRouter
+                    onClick={logout}
+                    to="/login"
+                    className="text-white hover:text-white hover:bg-[#DD3E3E]"
+                  >
+                    Logout
+                  </LinkRouter>
+                </li>
+              </>
+            ) : (
+              <li>
+                <div className="join bg-[#000854] hover:bg-[#000854]">
+                  <button className="btn btn-sm join-item btn-outline text-white">
+                    <LinkRouter to="/login">Login</LinkRouter>
+                  </button>
+                  <button className="btn btn-sm join-item btn-outline text-white">
+                    <LinkRouter to="/register">Register</LinkRouter>
+                  </button>
+                </div>
+              </li>
+            )}
           </ul>
         </div>
       </div>
