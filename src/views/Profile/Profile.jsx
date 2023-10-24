@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 import http from "../../lib/http";
 import ProfileImg from "../../assets/images/default.jpg";
 import "./Profile.css";
@@ -88,6 +89,7 @@ const Profile = () => {
                         <div className="biller">{transaction.bill.biller}</div>
                         <div className="amount">&#8369;&nbsp;{transaction.bill.amount}</div>
                         <div className="status">{transaction.status}</div>
+                        <div className="details"><Link to={"/transaction/"+transaction.id}>Details</Link></div>
                       </div>
                     </div>
                   )

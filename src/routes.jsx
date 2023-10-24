@@ -4,6 +4,7 @@ import Services from "./views/Services/Services";
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import Profile from "./views/Profile/Profile";
+import Transaction from "./views/Transaction/Transaction";
 import Electric from "./views/Bills/Electric";
 import Water from "./views/Bills/Water";
 import Cable from "./views/Bills/Cable";
@@ -32,6 +33,11 @@ export const navRoutes = [
     element: <Profile />,
     name: "Profile",
   },
+  {
+    path: "/transaction/:id",
+    element: <Transaction />,
+    name: "Transaction"
+  }
 ];
 
 export const authRoutes = [

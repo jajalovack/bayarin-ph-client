@@ -33,3 +33,13 @@
 {
     width: 200px;
 }
+
+.transaction .status
+{
+    width: 150px;
+}
+
+.transaction .details a
+{
+    text-decoration: underline;
+}
