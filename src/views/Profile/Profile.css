@@ -1,0 +1,30 @@
+.transactions
+{
+    padding: 20px;
+}
+
+.transaction
+{
+    display: flex;
+}
+
+.transaction .date
+{
+    margin-right: 40px;
+    width: 200px;
+}
+
+.transaction .refnum
+{
+    margin-right: 70px;
+}
+
+.transaction .biller
+{
+    width: 300px;
+}
+
+.transaction .amount
+{
+    width: 200px;
+}
