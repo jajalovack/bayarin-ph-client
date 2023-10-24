@@ -10,7 +10,7 @@ const Register = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState(null);
+  const [profilePic, setProfilePic] = useState("default.jpg");
   const [birthdate, setBirthDate] = useState(null);
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
