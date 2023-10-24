@@ -32,10 +32,11 @@ const Profile = () => {
         setVerified(response.data.isVerified?"Verified User":"Unverified User");
 
         const profilePicDataResponse = await api.get(response.data.profile_pic, { responseType: 'arraybuffer' });
-
-        const profilePicDataBlob = new Blob([profilePicDataResponse.data], { type: profilePicDataResponse.headers["content-type"] });
-
-        setProfilePic(URL.createObjectURL(profilePicDataBlob));
+        if (profilePicDataResponse.status==200)
+        {
+          const profilePicDataBlob = new Blob([profilePicDataResponse.data], { type: profilePicDataResponse.headers["content-type"] });
+          setProfilePic(URL.createObjectURL(profilePicDataBlob));
+        }
 
         const transactionsList=await api.get("/transactions");
         setTransactions(transactionsList.data);
@@ -68,6 +69,13 @@ const Profile = () => {
         <div className="padding-x padding-b text-white">
           <font style={{fontSize: "25px"}}>Transactions:</font>
           <div className="rounded-md bg-white text-black transactions">
+            <div className="transaction transactionsheader">
+              <div className="date"><b>Date</b></div>
+              <div className="refnum"><b>Reference Number</b></div>
+              <div className="biller"><b>Biller</b></div>
+              <div className="amount"><b>Amount</b></div>
+              <div className="status"><b>Status</b></div>
+            </div>
             {
               transactions.map((transaction,index)=>{
                 if (transaction)
