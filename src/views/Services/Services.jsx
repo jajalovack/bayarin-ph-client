@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../assets/icon.svg";
 import Offers from "./Components/Offers";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -19,7 +20,7 @@ const Services = () => {
             efficient experience.
           </p>
           <button className="text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-[#c1121f] hover:border-[#c1121f] duration-300 rounded w-[6.6rem]">
-            Register
+            <Link to="/register">Register</Link>
           </button>
         </div>
         <object className="w-[20rem] hidden md:flex" data={Logo}></object>

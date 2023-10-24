@@ -1,6 +1,5 @@
 import Electricity from "../../../assets/images/services-electricity-img.png";
 import Internet from "../../../assets/images/services-internet-img.png";
-import Tuition from "../../../assets/images/services-tuition-img.png";
 import Water from "../../../assets/images/services-water-img.png";
 import Credit from "../../../assets/images/services-credit-img.png";
 import Load from "../../../assets/images/services-load-img.png";
@@ -59,7 +58,7 @@ const Services = () => {
           <div className="hover:scale-110 duration-100 cursor-pointer">
             <Link to="/misc">
               <img className="w-20 mx-auto" src={Misc} alt="Tuition Icon" />
-              <p className="my-4">Miscellanous</p>
+              <p className="my-4">Miscellaneous</p>
             </Link>
           </div>
         </div>
