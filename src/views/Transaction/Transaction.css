@@ -1,0 +1,33 @@
+.receipt
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.receipt .details
+{
+    display: block;
+}
+
+.receipt > .details > div
+{
+    display: flex;
+}
+
+.receipt b
+{
+    display: block;
+    width: 200px;
+}
+
+.receipt .logo
+{
+    margin-bottom: 40px;
+}
+
+.receipt .logo object
+{
+    height: 200px;
+}
