@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import http from "../../lib/http";
 
 const Register = () => {
@@ -10,28 +10,37 @@ const Register = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState("default.jpg");
+  const [profilePic, setProfilePic] = useState(null);
   const [birthdate, setBirthDate] = useState(null);
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    first_name:[],
+    last_name:[],
+    email:[],
+    birthdate:[],
+    password:[],
+    password_confirmation:[]
+  });
 
   async function register(e) {
     e.preventDefault();
     try {
-      // let image_name = null;
-      // if (profilePic) {
-      //   const form = new FormData();
-      //   form.append("image", profilePic);
-
-      //   const response = await api.post("/upload", form);
-      //   image_name = response.data.image;
-      // }
+      let image_name = "default.jpg";
+      if (profilePic)
+      {
+        const form = new FormData();
+        form.append("image",profilePic);
+        const response=await api.post('/upload',form);
+        image_name=response.data.profile;
+        console.log(image_name);
+      }
+      
       const body = {
         first_name,
         last_name,
         email,
-        profilePic,
+        profilePic: image_name,
         birthdate,
         password,
         password_confirmation,
@@ -107,7 +116,7 @@ const Register = () => {
                 <input
                   type="file"
                   className="file-input file-input-bordered w-full max-w-xs"
-                  onChange={(e) => setProfilePic(e.target.files[e])}
+                  onChange={(e) => setProfilePic(e.target.files[0])}
                 />
               </div>
               <div className="form-control">
