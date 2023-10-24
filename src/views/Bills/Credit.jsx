@@ -20,9 +20,12 @@ const Credit = () => {
   const [selectedBiller, setSelectedBiller] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refNumValue, setRefNumValue] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [paymentMethods, setPaymentMethods] = useState([]);
 
   useEffect(() => {
     getBillers();
+    getPaymentMethods();
   }, []);
 
   async function getBillers() {
@@ -32,6 +35,15 @@ const Credit = () => {
         a.biller.localeCompare(b.biller)
       );
       setBillers(sortedBillers);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function getPaymentMethods() {
+    try {
+      const response = await api.get("/paymentmethods");
+      setPaymentMethods(response.data);
     } catch (e) {
       console.log(e);
     }
@@ -126,16 +138,23 @@ const Credit = () => {
                 </div>
               </div>
               <div className="flex items-center justify-center mt-5">
-                <select className="select w-full max-w-xs select-bordered">
-                  <option disabled selected>
+                <select
+                  className="select w-full max-w-xs select-bordered"
+                  value={selectedPaymentMethod}
+                  onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                >
+                  <option disabled value="">
                     Pick your payment method
                   </option>
-                  <option>Homer</option>
-                  <option>Marge</option>
-                  <option>Bart</option>
-                  <option>Lisa</option>
-                  <option>Maggie</option>
+                  {paymentMethods.map((method) => (
+                    <option key={method.id} value={method.payment_method}>
+                      {method.payment_method}
+                    </option>
+                  ))}
                 </select>
+                <button className="btn absolute bottom-0 mb-5 bg-blue-600">
+                  Confirm
+                </button>
               </div>
             </div>
           </>
