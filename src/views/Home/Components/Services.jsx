@@ -5,6 +5,7 @@ import Water from "../../../assets/images/services-water-img.png";
 import Credit from "../../../assets/images/services-credit-img.png";
 import Load from "../../../assets/images/services-load-img.png";
 import Misc from "../../../assets/images/services-misc-img.png";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -18,36 +19,48 @@ const Services = () => {
         <div></div>
         <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-4 text-center py-8">
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img
-              className="w-20 mx-auto"
-              src={Electricity}
-              alt="Electricity Icon"
-            />
-            <p className="my-4">Electric Utilities</p>
+            <Link to="/electric">
+              <img
+                className="w-20 mx-auto"
+                src={Electricity}
+                alt="Electricity Icon"
+              />
+              <p className="my-4">Electric Utilities</p>
+            </Link>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Water} alt="Water Icon" />
-            <p className="my-4">Water Utilities</p>
+            <Link to="/water">
+              <img className="w-20 mx-auto" src={Water} alt="Water Icon" />
+              <p className="my-4">Water Utilities</p>
+            </Link>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Internet} alt="Internet Icon" />
-            <p className="my-4">Cable/Internets</p>
+            <Link to="/cable">
+              <img
+                className="w-20 mx-auto"
+                src={Internet}
+                alt="Internet Icon"
+              />
+              <p className="my-4">Cable/Internets</p>
+            </Link>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Tuition} alt="Tuition Icon" />
-            <p className="my-4">Tuition</p>
+            <Link to="/credit">
+              <img className="w-20 mx-auto" src={Credit} alt="Tuition Icon" />
+              <p className="my-4">Credit</p>
+            </Link>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Credit} alt="Tuition Icon" />
-            <p className="my-4">Credit</p>
+            <Link to="/prepaid">
+              <img className="w-20 mx-auto" src={Load} alt="Tuition Icon" />
+              <p className="my-4">Prepaid Load</p>
+            </Link>
           </div>
           <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Load} alt="Tuition Icon" />
-            <p className="my-4">Prepaid Load</p>
-          </div>
-          <div className="hover:scale-110 duration-100 cursor-pointer">
-            <img className="w-20 mx-auto" src={Misc} alt="Tuition Icon" />
-            <p className="my-4">Miscellanous</p>
+            <Link to="/misc">
+              <img className="w-20 mx-auto" src={Misc} alt="Tuition Icon" />
+              <p className="my-4">Miscellanous</p>
+            </Link>
           </div>
         </div>
       </div>

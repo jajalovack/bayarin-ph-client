@@ -10,7 +10,7 @@ const Register = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState(null);
+  const [profilePic, setProfilePic] = useState("default.jpg");
   const [birthdate, setBirthDate] = useState(null);
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
@@ -19,6 +19,14 @@ const Register = () => {
   async function register(e) {
     e.preventDefault();
     try {
+      // let image_name = null;
+      // if (profilePic) {
+      //   const form = new FormData();
+      //   form.append("image", profilePic);
+
+      //   const response = await api.post("/upload", form);
+      //   image_name = response.data.image;
+      // }
       const body = {
         first_name,
         last_name,
@@ -34,41 +42,14 @@ const Register = () => {
       localStorage.setItem("user", JSON.stringify(response.data.user));
       window.dispatchEvent(new Event("authenticated"));
       navigate("/");
-      //  copy comment below
     } catch (e) {
       setErrors(e.response.data.errors);
       console.log(e);
     }
   }
-  //  if (response.data && response.data.errors) {
-  //    setErrors(response.data.errors);
-  //  } else {
-  //    setErrors({});
-  //    console.log(response);
-
-  //    navigate("/");
-  //  }
 
   return (
     <div className="mt-3 md:padding h-screen mb-[20rem] md:mb-[30rem] lg:mb-[20rem]">
-      {/* {showAlert && (
-        <div className="alert alert-warning">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            />
-          </svg>
-          <span>Warning: Wrong credentials!</span>
-        </div>
-      )} */}
       <div className="hero min-h-screen md:bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left md:w-[30rem] md:ml-10">

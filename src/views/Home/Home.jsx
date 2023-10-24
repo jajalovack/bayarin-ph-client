@@ -24,7 +24,7 @@ const Home = () => {
               1000,
               "Cable/Internet",
               1000,
-              "Tuition",
+              "Credit",
               1000,
             ]}
             wrapper="span"
@@ -41,9 +41,9 @@ const Home = () => {
           PH
         </p>
         <div className="flex gap-3">
-          <button className="group text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-[#c1121f] hover:border-[#c1121f] duration-300 rounded">
+          <button className="text-white border-2 px-6 py-3 my-2 flex items-center hover:bg-[#c1121f] hover:border-[#c1121f] duration-300 rounded">
             <LinkRouter to="/about">Learn More</LinkRouter>
-            <span className="group-hover:rotate-90 duration-300">
+            <span className="duration-300">
               <HiArrowNarrowRight className="ml-3" />
             </span>
           </button>
