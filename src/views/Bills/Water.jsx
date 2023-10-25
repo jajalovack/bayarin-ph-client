@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import http from "../../lib/http";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,12 +16,14 @@ const Water = () => {
   const api = http({
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   });
+  const navigate=useNavigate();
 
   const [billers, setBillers] = useState([]);
   const [selectedBiller, setSelectedBiller] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refNumValue, setRefNumValue] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [simulateFailure,toggleFailure]=useState(false);
   const [paymentMethods, setPaymentMethods] = useState([]);
 
   useEffect(() => {
@@ -50,7 +53,7 @@ const Water = () => {
   }
 
   const openModal = (biller) => {
-    setSelectedBiller(biller);
+    setSelectedBiller(biller.id);
     setIsModalOpen(true);
   };
 
@@ -63,11 +66,31 @@ const Water = () => {
     const sanitizedValue = event.target.value.replace(/\D/g, "").slice(0, 13);
     setRefNumValue(sanitizedValue);
   };
+
+  async function transact()
+  {
+    const body={
+      refnum: refNumValue,
+      paymentmethod_id: selectedPaymentMethod,
+      transactionstatus_id: simulateFailure?2:1
+    }
+    try
+    {
+      const response=await api.post("/pay",body);
+      alert("Transaction successful!");
+      navigate("/profile");
+    }
+    catch (error)
+    {
+      alert(error.response.data.message);
+    }
+    // console.log(response);
+  }
   return (
     <>
       <div className="w-full">
         <h1 className="bg-[#297bfa] w-full px-8 flex py-[6rem] md:py-[10rem] text-4xl font-bold text-[#E0DA00]">
-          Water Utilities
+          Credit
         </h1>
         <div className="my-4 h-screen">
           <div className="h-96">
@@ -137,7 +160,7 @@ const Water = () => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-center mt-5">
+              <div className="flex items-center justify-center mt-5" style={{flexWrap:"wrap"}}>
                 <select
                   className="select w-full max-w-xs select-bordered"
                   value={selectedPaymentMethod}
@@ -147,12 +170,15 @@ const Water = () => {
                     Pick your payment method
                   </option>
                   {paymentMethods.map((method) => (
-                    <option key={method.id} value={method.payment_method}>
+                    <option key={method.id} value={method.id}>
                       {method.payment_method}
                     </option>
                   ))}
                 </select>
-                <button className="btn absolute bottom-0 mb-5 bg-blue-600">
+                <div style={{flexBasis:"100%",height:"10px"}}></div>
+                <input type="checkbox" name="simulateFailure" id="simulateFailure" checked={simulateFailure} onChange={()=>toggleFailure(simulateFailure?false:true)}/>
+                <label htmlFor="simulateFailure">Simulate Failed Transaction</label>
+                <button className="btn absolute bottom-0 mb-5 bg-blue-600" onClick={transact}>
                   Confirm
                 </button>
               </div>
