@@ -16,14 +16,14 @@ const Electric = () => {
   const api = http({
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   });
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [billers, setBillers] = useState([]);
   const [selectedBiller, setSelectedBiller] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refNumValue, setRefNumValue] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
-  const [simulateFailure,toggleFailure]=useState(false);
+  const [simulateFailure, toggleFailure] = useState(false);
   const [paymentMethods, setPaymentMethods] = useState([]);
 
   useEffect(() => {
@@ -67,21 +67,17 @@ const Electric = () => {
     setRefNumValue(sanitizedValue);
   };
 
-  async function transact()
-  {
-    const body={
+  async function transact() {
+    const body = {
       refnum: refNumValue,
       paymentmethod_id: selectedPaymentMethod,
-      transactionstatus_id: simulateFailure?2:1
-    }
-    try
-    {
-      const response=await api.post("/pay",body);
+      transactionstatus_id: simulateFailure ? 2 : 1,
+    };
+    try {
+      const response = await api.post("/pay", body);
       alert("Transaction successful!");
       navigate("/profile");
-    }
-    catch (error)
-    {
+    } catch (error) {
       alert(error.response.data.message);
     }
     // console.log(response);
@@ -90,7 +86,7 @@ const Electric = () => {
     <>
       <div className="w-full">
         <h1 className="bg-[#297bfa] w-full px-8 flex py-[6rem] md:py-[10rem] text-4xl font-bold text-[#E0DA00]">
-          Credit
+          Electric Utilities
         </h1>
         <div className="my-4 h-screen">
           <div className="h-96">
@@ -160,7 +156,10 @@ const Electric = () => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-center mt-5" style={{flexWrap:"wrap"}}>
+              <div
+                className="flex items-center justify-center mt-5"
+                style={{ flexWrap: "wrap" }}
+              >
                 <select
                   className="select w-full max-w-xs select-bordered"
                   value={selectedPaymentMethod}
@@ -175,10 +174,21 @@ const Electric = () => {
                     </option>
                   ))}
                 </select>
-                <div style={{flexBasis:"100%",height:"10px"}}></div>
-                <input type="checkbox" name="simulateFailure" id="simulateFailure" checked={simulateFailure} onChange={()=>toggleFailure(simulateFailure?false:true)}/>
-                <label htmlFor="simulateFailure">Simulate Failed Transaction</label>
-                <button className="btn absolute bottom-0 mb-5 bg-blue-600" onClick={transact}>
+                <div style={{ flexBasis: "100%", height: "10px" }}></div>
+                <input
+                  type="checkbox"
+                  name="simulateFailure"
+                  id="simulateFailure"
+                  checked={simulateFailure}
+                  onChange={() => toggleFailure(simulateFailure ? false : true)}
+                />
+                <label htmlFor="simulateFailure">
+                  Simulate Failed Transaction
+                </label>
+                <button
+                  className="btn absolute bottom-0 mb-5 bg-blue-600"
+                  onClick={transact}
+                >
                   Confirm
                 </button>
               </div>
