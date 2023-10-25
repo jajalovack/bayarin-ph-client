@@ -38,15 +38,20 @@ const Profile = () => {
           const profilePicDataBlob = new Blob([profilePicDataResponse.data], { type: profilePicDataResponse.headers["content-type"] });
           setProfilePic(URL.createObjectURL(profilePicDataBlob));
         }
+        
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
 
+      try {
         const transactionsList=await api.get("/transactions");
         setTransactions(transactionsList.data);
         if (transactionsList.data.length==0)
         {
           setTransactions([false]);
         }
-        
-      } catch (error) {
+      }
+      catch (error) {
         console.error("Error fetching data:", error);
       }
     }
